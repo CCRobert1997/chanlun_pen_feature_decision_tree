@@ -1,3 +1,5 @@
+📌 更方便使用的README见 `read_me_machine_learning.txt` 文件。
+
 # 📊 Machine Learning Signal Detection Pipeline for Pen & Zhongshu Structure
 
 This repository provides a pipeline for detecting buy signals using pen-level and pen-zhongshu level structure, trained and evaluated on a per-stock basis.
