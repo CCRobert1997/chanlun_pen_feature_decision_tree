@@ -1,0 +1,27 @@
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market NVDA_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market AMZN_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market META_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market MSFT_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market SNOW_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market TIGR_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market TSLA_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market U_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market AVGO_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market AAPL_NASDAQ
+
+
+
+
+
+
+
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market LLY_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market NVO_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market ADBE_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market TSM_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market PFE_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market JPM_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market BAC_NYSE
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market COST_NASDAQ
+python find_sanmai_30second_segment_for_visualization.py --print_process_info --stock_name_and_market NFLX_NASDAQ
+

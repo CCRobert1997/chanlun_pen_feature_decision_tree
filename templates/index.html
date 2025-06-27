@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美股买卖机会</title>
+    <script>
+        function autoRefresh() {
+            setTimeout(function() {
+                location.reload();
+            }, 100000);
+        }
+        window.onload = autoRefresh;
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function loadLatestPlot(stock, interval) {
+            fetch(`/get_latest_plot?stock=${stock}&interval=${interval}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.images.length > 0) {
+                        currentImages = data.images;
+                        currentIndex = 0;
+                        updateImage();
+                    } else {
+                        document.getElementById("plot-display").innerHTML = "<p>无可用图片</p>";
+                    }
+                });
+        }
+
+
+        function updateImage() {
+            if (currentImages.length > 0) {
+                document.getElementById("plot-display").innerHTML = `
+                    <div class="image-container">
+                        <div class="button-group">
+                            <button class="arrow-btn" onclick="prevImage()">⬅️</button>
+                            <button class="arrow-btn" onclick="nextImage()">➡️</button>
+                        </div>
+                        <img src="/machine_learning_plot/${currentImages[currentIndex]}" class="plot-image">
+                    </div>
+                `;
+            }
+        }
+
+
+        function prevImage() {
+            if (currentIndex < currentImages.length - 1) {
+                currentIndex++;
+                updateImage();
+            }
+        }
+
+        function nextImage() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateImage();
+            }
+        }
+    </script>
+    <style>
+        body { font-size: 9px; margin: 0; padding: 3px; background-color: black; color: white; }
+        table { width: 100%; border-collapse: collapse; font-size: 7px; color: white; }
+        th, td { border: 1px solid white; padding: 1px; text-align: center; }
+        th { background-color: #444; }
+        .stock-container { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        .stock-box { width: 18%; margin: 0.1%; padding: 2px; border: 1px solid #ccc; box-shadow: 1px 1px 2px #888; background-color: #222; }
+        h3 { font-size: 10px; margin: 2px 0; color: white; }
+        .sell-confirm { background-color: red; }
+        .buy-confirm { background-color: green; }
+        .sell-no-trade { color: red; background-color: black; }
+        .buy-no-trade { color: green; background-color: black; }
+        .close-trade { background-color: orange; }
+        @keyframes flash-bg-red {
+            0% { background-color: red; }
+            50% { background-color: deepskyblue; }
+            100% { background-color: red; }
+        }
+        @keyframes flash-bg-green {
+            0% { background-color: green; }
+            50% { background-color: deepskyblue; }
+            100% { background-color: green; }
+        }
+        @keyframes flash-bg-orange {
+            0% { background-color: orange; }
+            50% { background-color: deepskyblue; }
+            100% { background-color: orange; }
+        }
+        @keyframes flash-bg-black {
+            0% { background-color: black; }
+            50% { background-color: deepskyblue; }
+            100% { background-color: black; }
+        }
+        .flash-red { animation: flash-bg-red 2s infinite alternate; }
+        .flash-green { animation: flash-bg-green 2s infinite alternate; }
+        .flash-orange { animation: flash-bg-orange 2s infinite alternate; }
+        .flash-black { animation: flash-bg-black 2s infinite alternate; }
+        tr:hover { transform: scale(1.5); background-color: rgba(255, 255, 255, 0.3); }
+        .btn { padding: 5px; font-size: 10px; cursor: pointer; margin: 2px; }
+        .image-container {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .button-group {
+            margin-bottom: 5px; /* 按钮与图片之间的间距 */
+        }
+
+        .arrow-btn {
+            font-size: 20px; /* 增大箭头按钮 */
+            padding: 10px 15px;
+            border: none;
+            background-color: #444;
+            color: white;
+            cursor: pointer;
+            margin: 0 5px; /* 按钮间距 */
+        }
+
+        .arrow-btn:hover {
+            background-color: #666;
+        }
+
+        .plot-image {
+            max-width: 100%;
+        }
+
+        #plot-display { text-align: center; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1 style="font-size: 12px; text-align: center;">美股买卖机会</h1>
+    <div class="stock-container">
+        {% for stock, intervals in data.items() %}
+            <div class="stock-box">
+                <h3>{{ stock }}</h3>
+                <table>
+                    <tr>
+                        {% for interval in time_intervals %}
+                        <!--<th>{{ interval }}</th>-->
+                        <button class="btn" onclick="loadLatestPlot('{{ stock }}', '{{ interval }}')">
+                                    {{ interval }}
+                                </button>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for interval in time_intervals %}
+                            <td>
+                                <table>
+                                    {% for row in intervals[interval] %}
+                                        {% set row_class = "" %}
+                                        {% if "三卖确认" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "sell-confirm" %}
+                                        {% elif "二卖确认" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "sell-confirm" %}
+                                        {% elif "三买确认" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "buy-confirm" %}
+                                        {% elif "二买确认" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "buy-confirm" %}
+                                        {% elif "做多" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "buy-confirm" %}
+                                        {% elif "做空" in row[0] and "不建仓" not in row[0] %}
+                                            {% set row_class = "sell-confirm" %}
+                                        {% elif "三卖确认但不建仓" in row[0] %}
+                                            {% set row_class = "sell-no-trade" %}
+                                        {% elif "三买确认但不建仓" in row[0] %}
+                                            {% set row_class = "buy-no-trade" %}
+                                        {% elif "减仓" in row[0] %}
+                                            {% set row_class = "close-trade" %}
+                                        {% elif "平仓" in row[0] %}
+                                            {% set row_class = "close-trade" %}
+                                        {% endif %}
+                                        {% set entry_key = (stock, interval, row[2]) %}
+                                        {% if entry_key in latest_entry_timestamps and (current_time - latest_entry_timestamps[entry_key]) < 600 %}
+                                            {% if row_class == "sell-confirm" %}
+                                                {% set row_class = "flash-red" %}
+                                            {% elif row_class == "buy-confirm" %}
+                                                {% set row_class = "flash-green" %}
+                                            {% elif row_class == "close-trade" %}
+                                                {% set row_class = "flash-orange" %}
+                                            {% elif row_class == "sell-no-trade" or row_class == "buy-no-trade" %}
+                                                {% set row_class = "flash-black" %}
+                                            {% endif %}
+                                        {% endif %}
+                                        <tr class="{{ row_class }}">
+                                            <td>{{ row[0] }}</td>
+                                            <td>{{ row[1] }}</td>
+                                        </tr>
+                                        <tr class="{{ row_class }}">
+                                            <td colspan="2">{{ row[2] }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
+                        {% endfor %}
+                    </tr>
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="plot-display"></div>
+</body>
+</html>
