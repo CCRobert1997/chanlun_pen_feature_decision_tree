@@ -897,9 +897,9 @@ class QuantStrategyMETA_NASDAQ(QuantStrategy0002):
         else:
             return False
 
-# class QuantStrategyMSFT_NASDAQ(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
+class QuantStrategyMSFT_NASDAQ(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
 
 class QuantStrategySNOW_NYSE(QuantStrategy0002):
     def trigger_rule(self, data_X):
@@ -914,13 +914,13 @@ class QuantStrategySNOW_NYSE(QuantStrategy0002):
             return False
 
 
-# class QuantStrategyTIGR_NASDAQ(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
-#
-# class QuantStrategyTSLA_NASDAQ(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
+class QuantStrategyTIGR_NASDAQ(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
+
+class QuantStrategyTSLA_NASDAQ(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
 
 class QuantStrategyU_NYSE(QuantStrategy0002):
     def trigger_rule(self, data_X):
@@ -953,13 +953,13 @@ class QuantStrategyAVGO_NASDAQ(QuantStrategy0002):
             return False
 
 
-# class QuantStrategyAAPL_NASDAQ(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
-#
-# class QuantStrategyLLY_NYSE(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
+class QuantStrategyAAPL_NASDAQ(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
+
+class QuantStrategyLLY_NYSE(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
 
 class QuantStrategyNVO_NYSE(QuantStrategy0002):
     def trigger_rule(self, data_X):
@@ -1016,9 +1016,9 @@ class QuantStrategyTSM_NYSE(QuantStrategy0002):
 
 
 
-# class QuantStrategyPFE_NYSE(QuantStrategy0002):
-#     def trigger_rule(self, data_X):
-#         super().trigger_rule(data_X)
+class QuantStrategyPFE_NYSE(QuantStrategy0002):
+    def trigger_rule(self, data_X):
+        super().trigger_rule(data_X)
 
 class QuantStrategyJPM_NYSE(QuantStrategy0002):
     def trigger_rule(self, data_X):
