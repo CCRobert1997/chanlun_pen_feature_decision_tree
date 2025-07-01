@@ -467,7 +467,7 @@ if __name__ == "__main__":
                            "NFLX_NASDAQ": QuantStrategyNFLX_NASDAQ}
 
     # strategy = QuantStrategy0001(STOCK_NAME_AND_MARKET, GROUP_SIZEs[0] * 6)
-    strategy = strategy = STOCK_QuantStrategy[STOCK_NAME_AND_MARKET](STOCK_NAME_AND_MARKET, GROUP_SIZEs[0] * 6)
+    strategy = STOCK_QuantStrategy[STOCK_NAME_AND_MARKET](STOCK_NAME_AND_MARKET, GROUP_SIZEs[0] * 6)
 
 
     # ############################### 全时间回测用 ###############################
@@ -549,17 +549,17 @@ if __name__ == "__main__":
 
 
 
-        ############################### 线上实盘用 ###############################
-        ########################线上实盘到全时间回测记得切换#########################
+        # ############################### 线上实盘用 ###############################
+        # ########################线上实盘到全时间回测记得切换#########################
         if is_market_open(): # 线上实盘用
-        ############################### 线上实盘用 ###############################
+        # ############################### 线上实盘用 ###############################
 
             # 开始计时
             start_time = time.time()
 
             # DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 15, 1: 15}
             # DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 30, 1: 30}
-            DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 70, 5: 60, 4: 50, 3: 40, 2: 30, 1: 20}
+            DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 80, 10: 28, 5: 14, 4: 12, 3: 10, 2: 8, 1: 5}
 
 
 
@@ -598,7 +598,6 @@ if __name__ == "__main__":
             #
             # ######## 从最小级别向上递归 ######
             # ############################### 全时间回测用 ###############################
-
 
 
             ############################### 线上实盘用 ###############################
@@ -729,10 +728,9 @@ if __name__ == "__main__":
             #                     row_heights=[0.8 for group_i in range(plot_number_each_jibie * len(GROUP_SIZEs))])
 
 
-            # 先画一个全数据图以确保后面几幅图所有时间戳包含，也就是GROUP_SIZEs等于1
-            kline_df = generate_kline_data_group_points(df, group_size=1)
-            # print("6 second data processed")
-
+            # # 先画一个全数据图以确保后面几幅图所有时间戳包含，也就是GROUP_SIZEs等于1
+            # kline_df = generate_kline_data_group_points(df, group_size=1)
+            # # print("6 second data processed")
 
 
 
@@ -791,7 +789,7 @@ if __name__ == "__main__":
                                                                                 seconds_level=GROUP_SIZEs[0] * 6, for_segment=False)
                 history_long_time_pen_zhongshus = merge_zhongshu_with_checkpoint(pen_zhongshus, STOCK_NAME_AND_MARKET, seconds_level=GROUP_SIZEs[0] * 6)
 
-                # save_new_pen_zhongshu_to_checkpoint(pen_zhongshus, STOCK_NAME_AND_MARKET, seconds_level=6)
+                # save_new_pen_zhongshu_to_checkpoint(pen_zhongshus, STOCK_NAME_AND_MARKET, seconds_level=GROUP_SIZEs[0] * 6)
 
 
                 if len(history_long_time_pen_zhongshus) > 60:
@@ -935,11 +933,13 @@ if __name__ == "__main__":
                 # 打印运行时间（秒）
                 print(f"运行时间：{elapsed_time:.2f} 秒***********************************************************")
 
-        ############################### 线上实盘用 ###############################
-        ########################线上实盘到全时间回测记得切换#########################
-        time.sleep(300)  # Wait for 300 seconds (5 minutes) before the next attempt
-        ####### time.sleep(600)  # Wait for 600 seconds (10 minutes) before the next attempt
-        ############################### 线上实盘用 ###############################
+            ############################### 线上实盘用 ###############################
+            ########################线上实盘到全时间回测记得切换#########################
+            # time.sleep(300)  # Wait for 300 seconds (5 minutes) before the next attempt
+            # time.sleep(5)  # Wait for 300 seconds (5 minutes) before the next attempt
+            time.sleep(60)  # Wait for 60 seconds (1 minutes) before the next attempt
+            ####### time.sleep(600)  # Wait for 600 seconds (10 minutes) before the next attempt
+            ############################### 线上实盘用 ###############################
 
 
 

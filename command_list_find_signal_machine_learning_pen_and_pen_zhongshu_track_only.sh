@@ -1,61 +1,89 @@
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AAPL_NASDAQ  > AAPL_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NVDA_NASDAQ  > NVDA_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AMZN_NASDAQ  > AMZN_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market META_NASDAQ  > META_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market MSFT_NASDAQ  > MSFT_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market SNOW_NYSE  > SNOW_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TIGR_NASDAQ  > TIGR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TSLA_NASDAQ  > TSLA_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market U_NYSE  > U_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AVGO_NASDAQ  > AVGO_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market LLY_NYSE  > LLY_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NVO_NYSE  > NVO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market ADBE_NASDAQ  > ADBE_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TSM_NYSE  > TSM_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PFE_NYSE  > PFE_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market JPM_NYSE  > JPM_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BAC_NYSE  > BAC_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market COST_NASDAQ  > COST_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NFLX_NASDAQ  > NFLX_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NVDA_NASDAQ > NVDA_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AMZN_NASDAQ > AMZN_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market META_NASDAQ > META_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market SNOW_NYSE > SNOW_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market U_NYSE > U_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AVGO_NASDAQ > AVGO_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NVO_NYSE > NVO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market ADBE_NASDAQ > ADBE_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TSM_NYSE > TSM_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market JPM_NYSE > JPM_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BAC_NYSE > BAC_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market COST_NASDAQ > COST_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market NFLX_NASDAQ > NFLX_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
 
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BABA_NYSE  > BABA_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PDD_NASDAQ  > PDD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market SMCI_NASDAQ  > SMCI_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market MSTR_NASDAQ  > MSTR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market ORCL_NYSE  > ORCL_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PLTR_NASDAQ  > PLTR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market RGTI_NASDAQ  > RGTI_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market AAPL_NASDAQ > AAPL_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PANW_NASDAQ  > PANW_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market MSFT_NASDAQ > MSFT_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market JD_NASDAQ  > JD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TIGR_NASDAQ > TIGR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BIDU_NASDAQ  > BIDU_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TSLA_NASDAQ > TSLA_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TUYA_NYSE  > TUYA_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market LLY_NYSE > LLY_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market DIS_NYSE  > DIS_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PFE_NYSE > PFE_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PEP_NASDAQ  > PEP_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BABA_NYSE > BABA_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market KO_NYSE  > KO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PDD_NASDAQ > PDD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market WMT_NYSE  > WMT_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market SMCI_NASDAQ > SMCI_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market DUOL_NASDAQ  > DUOL_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market MSTR_NASDAQ > MSTR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market OKLO_NYSE  > OKLO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market ORCL_NYSE > ORCL_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TEM_NASDAQ  > TEM_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PLTR_NASDAQ > PLTR_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market HIMS_NYSE  > HIMS_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market RGTI_NASDAQ > RGTI_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
 
-nohup python find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market HOOD_NASDAQ  > HOOD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PANW_NASDAQ > PANW_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market JD_NASDAQ > JD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market BIDU_NASDAQ > BIDU_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TUYA_NYSE > TUYA_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market DIS_NYSE > DIS_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market PEP_NASDAQ > PEP_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market KO_NYSE > KO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market WMT_NYSE > WMT_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market DUOL_NASDAQ > DUOL_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market OKLO_NYSE > OKLO_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market TEM_NASDAQ > TEM_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market HIMS_NYSE > HIMS_NYSE_pen_and_penzhongshu_track_only.log 2>&1 &
+
+nohup python -u find_ermai_penlevel_zhongshu_ML_for_visualization_pen_and_penzhongshu_track_only.py --print_process_info --info_save_to_file_mode --show_fig_when_sell_buy_action --group_size_for_high_level 1 --group_size_for_low_level 1 --stock_name_and_market HOOD_NASDAQ > HOOD_NASDAQ_pen_and_penzhongshu_track_only.log 2>&1 &
+
+
+
+

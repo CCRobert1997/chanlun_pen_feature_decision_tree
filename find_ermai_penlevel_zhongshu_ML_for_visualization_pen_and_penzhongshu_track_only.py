@@ -535,7 +535,8 @@ if __name__ == "__main__":
 
             # DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 15, 1: 15}
             # DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 30, 1: 30}
-            DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 70, 5: 60, 4: 50, 3: 40, 2: 30, 1: 20}
+            # DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 150, 10: 70, 5: 60, 4: 50, 3: 40, 2: 30, 1: 20}
+            DAYS_LOOK_BASED_ON_GROUP_SIZE = {45: 80, 10: 28, 5: 14, 4: 12, 3: 10, 2: 8, 1: 5}
 
 
 
@@ -705,9 +706,9 @@ if __name__ == "__main__":
             #                     row_heights=[0.8 for group_i in range(plot_number_each_jibie * len(GROUP_SIZEs))])
 
 
-            # 先画一个全数据图以确保后面几幅图所有时间戳包含，也就是GROUP_SIZEs等于1
-            kline_df = generate_kline_data_group_points(df, group_size=1)
-            # print("6 second data processed")
+            # # 先画一个全数据图以确保后面几幅图所有时间戳包含，也就是GROUP_SIZEs等于1
+            # kline_df = generate_kline_data_group_points(df, group_size=1)
+            # # print("6 second data processed")
 
 
 
@@ -909,11 +910,11 @@ if __name__ == "__main__":
             #     # 打印运行时间（秒）
             #     print(f"运行时间：{elapsed_time:.2f} 秒***********************************************************")
 
-        ############################### 线上实盘用 ###############################
-        ########################线上实盘到全时间回测记得切换#########################
-        time.sleep(300)  # Wait for 300 seconds (5 minutes) before the next attempt
-        ####### time.sleep(600)  # Wait for 600 seconds (10 minutes) before the next attempt
-        ############################### 线上实盘用 ###############################
+            ############################### 线上实盘用 ###############################
+            ########################线上实盘到全时间回测记得切换#########################
+            time.sleep(60)  # Wait for 300 seconds (5 minutes) before the next attempt
+            ####### time.sleep(600)  # Wait for 600 seconds (10 minutes) before the next attempt
+            ############################### 线上实盘用 ###############################
 
 
 
