@@ -1756,8 +1756,10 @@ def merge_pens_to_segments_based_on_pen_zhongshu(pens, pen_zhongshus_clean, merg
     type_three_buy_sell = []
     segments = []
 
+
+
     direction_before = pen_zhongshus_clean[0]["direction"]
-    first_pen_this_qushi_index = 0
+    first_pen_this_qushi_index = pen_zhongshus_clean[0]["core_pens_index"][-1] - 1
     for idx_pen_zhongshu, pen_zhongshu in enumerate(pen_zhongshus_clean):
         if pen_zhongshu["direction"] != direction_before:
             last_pen_index = pen_zhongshus_clean[idx_pen_zhongshu-1]["core_pens_index"][-1] + 1
@@ -2292,6 +2294,42 @@ def find_zhongshu_one_pen_form(pens, zgzd_type="classical"):
 
     return zhongshus, zhuanzhes
 
+
+
+def zhongshu_continue_fix(zhongshus, segments):
+    new_zhongshus = []
+    for zhongshu in zhongshus:
+        expected = list(range(min(zhongshu["core_pens_index"]), max(zhongshu["core_pens_index"]) + 1))
+        missing = sorted(set(expected) - set(zhongshu["core_pens_index"]))
+        for num in missing:
+            # 找到 num - 1 的索引，然后插入其后
+            if (num - 1) in zhongshu["core_pens_index"]:
+                idx = zhongshu["core_pens_index"].index(num - 1)
+                zhongshu["core_pens_index"].insert(idx + 1, num)
+                pen_add_fix = {
+                    "top_price": segments[num+1]["top_price"] if segments[num-1]["direction"] == "Down" else segments[num-1]["top_price"],
+                    "bottom_price": segments[num-1]["bottom_price"] if segments[num-1]["direction"] == "Down" else segments[num+1]["bottom_price"],
+                    "top_time": segments[num+1]["top_time"] if segments[num-1]["direction"] == "Down" else segments[num-1]["top_time"],
+                    "bottom_time": segments[num-1]["bottom_time"] if segments[num-1]["direction"] == "Down" else segments[num+1]["bottom_time"],
+                    "top_index": segments[num+1]["top_index"]-1 if segments[num-1]["direction"] == "Down" else segments[num-1]["top_index"]+1,
+                    "bottom_index": segments[num-1]["bottom_index"]+1 if segments[num-1]["direction"] == "Down" else segments[num+1]["bottom_index"]-1,
+                    "direction": "Up" if segments[num-1]["direction"] == "Down" else "Down",
+                    "timestamp_segment_complete": segments[num+1]["top_time"] if segments[num-1]["direction"] == "Down" else segments[num+1]["bottom_time"],
+                    "price_segment_complete": segments[num+1]["top_price"] if segments[num-1]["direction"] == "Down" else segments[num+1]["bottom_price"],
+                    "complex_fix": "complete"
+                }
+                zhongshu["core_pens"].insert(idx + 1, pen_add_fix)
+                # print(zhongshu["core_pens_index"], idx, len(expected))
+                # if idx+2 == len(expected):
+                #     print(zhongshu["core_pens_index"])
+                #     zhongshu["core_pens"] = zhongshu["core_pens"][: -1]
+                #     zhongshu["core_pens_index"] = zhongshu["core_pens_index"][: -1]
+
+        new_zhongshus.append(zhongshu)
+    return new_zhongshus
+
+
+
 # """
 #将包含了一类买点的中枢切开，将中枢的离开段划分到中枢以外
 def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
@@ -2318,35 +2356,36 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
 
     # 如果最后一个线段没有画成中枢的一部分，并且高低点不触及最后一个中枢，就把这个线段单独当一个中枢画出了，这往往是三买三卖
     if len(segments) - 1 > zhongshus[-1]["core_pens_index"][-1]:
-        if (segments[-1]["direction"] == "Up") and (segments[-1]["bottom_price"] <= segments[-1]["top_price"] <= zhongshus[-1]["ZD"]):
+        next_seg_index = zhongshus[-1]["core_pens_index"][-1] + 1
+        if (segments[next_seg_index]["direction"] == "Up") and (segments[next_seg_index]["bottom_price"] <= segments[next_seg_index]["top_price"] <= zhongshus[-1]["ZD"]):
             # 可能是向下的三卖
             sanmai_info = "short"
             zhongshu_last_temp_new = {
-                "ZG": segments[-1]["top_price"],
-                "ZD": segments[-1]["bottom_price"],
-                "start_time": segments[-1]["bottom_time"],
-                "end_time": segments[-1]["top_time"],
-                "core_pens": [segments[-1]],
+                "ZG": segments[next_seg_index]["top_price"],
+                "ZD": segments[next_seg_index]["bottom_price"],
+                "start_time": segments[next_seg_index]["bottom_time"],
+                "end_time": segments[next_seg_index]["top_time"],
+                "core_pens": [segments[next_seg_index]],
                 "core_pens_index": [len(segments) - 1],
-                "GG": segments[-1]["top_price"],
-                "DD": segments[-1]["bottom_price"],
+                "GG": segments[next_seg_index]["top_price"],
+                "DD": segments[next_seg_index]["bottom_price"],
                 "direction": "Down",
                 "zhongshu_jieshu": False,  # zhongshu_stop,
                 "kuozhang": 0  # times_kuozhan  # 中枢扩张次数
             }
             zhongshus_rough = zhongshus + [zhongshu_last_temp_new]
-        elif (segments[-1]["direction"] == "Down") and (segments[-1]["top_price"] >= segments[-1]["bottom_price"] >= zhongshus[-1]["ZG"]):
+        elif (segments[next_seg_index]["direction"] == "Down") and (segments[next_seg_index]["top_price"] >= segments[next_seg_index]["bottom_price"] >= zhongshus[-1]["ZG"]):
             # 可能是向上的三买
             sanmai_info = "long"
             zhongshu_last_temp_new = {
-                "ZG": segments[-1]["top_price"],
-                "ZD": segments[-1]["bottom_price"],
-                "start_time": segments[-1]["top_time"],
-                "end_time": segments[-1]["bottom_time"],
-                "core_pens": [segments[-1]],
+                "ZG": segments[next_seg_index]["top_price"],
+                "ZD": segments[next_seg_index]["bottom_price"],
+                "start_time": segments[next_seg_index]["top_time"],
+                "end_time": segments[next_seg_index]["bottom_time"],
+                "core_pens": [segments[next_seg_index]],
                 "core_pens_index": [len(segments) - 1],
-                "GG": segments[-1]["top_price"],
-                "DD": segments[-1]["bottom_price"],
+                "GG": segments[next_seg_index]["top_price"],
+                "DD": segments[next_seg_index]["bottom_price"],
                 "direction": "Up",
                 "zhongshu_jieshu": False,  # zhongshu_stop,
                 "kuozhang": 0  # times_kuozhan  # 中枢扩张次数
@@ -2361,7 +2400,6 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
     clean_zhongshus = []
     i = 0
     while i < len(zhongshus_rough):
-
         if 0 < i < len(zhongshus_rough) - 1:
             if (zhongshus_rough[i-1]["ZD"] < zhongshus_rough[i]["ZD"] > zhongshus_rough[i+1]["ZD"]): #包含一卖
                 max_pen_index = max(
@@ -2371,6 +2409,7 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                 if max_pen_index == 0 and zhongshus_rough[i]["core_pens"][max_pen_index]["direction"] == "Up":
                     # 第一段和第二段之间是一卖
                     if len(zhongshus_rough[i]["core_pens_index"]) >= 3:
+                        # print([zhongshu['direction'] for zhongshu in zhongshus_rough[i]["core_pens"]])
                         last_index_should_include = True if zhongshus_rough[i]["core_pens"][-1]['direction'] == "Up" else False
                         zhongshu_1 = {
                             "ZG": None, # zhongshus_rough[i]["core_pens"][2]["top_price"], # zhongshus_rough[i]["ZG"],
@@ -2434,7 +2473,7 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                         zhongshu_1["GG"] = max([pen["top_price"] for pen in zhongshu_1["core_pens"]])
                         zhongshu_1["DD"] = min([pen["bottom_price"] for pen in zhongshu_1["core_pens"]])
                         clean_zhongshus.append(zhongshu_1)
-                elif max_pen_index == len(zhongshus_rough[i]["core_pens"]) - 1 and zhongshus_rough[i]["core_pens"][max_pen_index]["direction"] == "Up":
+                elif max_pen_index == len(zhongshus_rough[i]["core_pens"]) - 1:# and zhongshus_rough[i]["core_pens"][max_pen_index]["direction"] == "Up":
                     # 最后一段结束是一卖
                     if len(zhongshus_rough[i]["core_pens_index"]) >= 2:
                         first_index_should_include = True if zhongshus_rough[i]["core_pens"][0][
@@ -2445,12 +2484,12 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                             "start_time": zhongshus_rough[i]["core_pens"][0][
                                 "top_time"] if first_index_should_include else zhongshus_rough[i]["core_pens"][1][
                                 "top_time"],
-                            "end_time": zhongshus_rough[i]["core_pens"][-2]["bottom_time"],
-                            "core_pens": zhongshus_rough[i]["core_pens"][0:-1] if first_index_should_include else
-                            zhongshus_rough[i]["core_pens"][1:-1],
+                            "end_time": zhongshus_rough[i]["core_pens"][max_pen_index-1]["bottom_time"],
+                            "core_pens": zhongshus_rough[i]["core_pens"][0:max_pen_index] if first_index_should_include else
+                            zhongshus_rough[i]["core_pens"][1:max_pen_index],
                             "core_pens_index": zhongshus_rough[i]["core_pens_index"][
-                                               0:-1] if first_index_should_include else zhongshus_rough[i][
-                                                                                         "core_pens_index"][1:-1],
+                                               0:max_pen_index] if first_index_should_include else zhongshus_rough[i][
+                                                                                         "core_pens_index"][1:max_pen_index],
                             "GG": None,
                             "DD": None,
                             "direction": "Up",
@@ -2470,7 +2509,7 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                         zhongshu_1["GG"] = max([pen["top_price"] for pen in zhongshu_1["core_pens"]])
                         zhongshu_1["DD"] = min([pen["bottom_price"] for pen in zhongshu_1["core_pens"]])
                         clean_zhongshus.append(zhongshu_1)
-                elif max_pen_index == len(zhongshus_rough[i]["core_pens"]) - 2 and zhongshus_rough[i]["core_pens"][max_pen_index]["direction"] == "Up":
+                elif max_pen_index == len(zhongshus_rough[i]["core_pens"]) - 2:# and zhongshus_rough[i]["core_pens"][max_pen_index]["direction"] == "Up":
                     # 最后一段和倒数第二段之间是一卖
                     if len(zhongshus_rough[i]["core_pens_index"]) >= 3:
                         first_index_should_include = True if zhongshus_rough[i]["core_pens"][0][
@@ -2481,12 +2520,12 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                             "start_time": zhongshus_rough[i]["core_pens"][0][
                                 "top_time"] if first_index_should_include else zhongshus_rough[i]["core_pens"][1][
                                 "top_time"],
-                            "end_time": zhongshus_rough[i]["core_pens"][-3]["bottom_time"],
-                            "core_pens": zhongshus_rough[i]["core_pens"][0:-2] if first_index_should_include else
-                            zhongshus_rough[i]["core_pens"][1:-2],
+                            "end_time": zhongshus_rough[i]["core_pens"][max_pen_index-1]["bottom_time"],
+                            "core_pens": zhongshus_rough[i]["core_pens"][0:max_pen_index] if first_index_should_include else
+                            zhongshus_rough[i]["core_pens"][1:max_pen_index],
                             "core_pens_index": zhongshus_rough[i]["core_pens_index"][
-                                               0:-2] if first_index_should_include else zhongshus_rough[i][
-                                                                                            "core_pens_index"][1:-2],
+                                               0:max_pen_index] if first_index_should_include else zhongshus_rough[i][
+                                                                                            "core_pens_index"][1:max_pen_index],
                             "GG": None,
                             "DD": None,
                             "direction": "Up",
@@ -2648,7 +2687,7 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                         zhongshu_1["GG"] = max([pen["top_price"] for pen in zhongshu_1["core_pens"]])
                         zhongshu_1["DD"] = min([pen["bottom_price"] for pen in zhongshu_1["core_pens"]])
                         clean_zhongshus.append(zhongshu_1)
-                elif min_pen_index == len(zhongshus_rough[i]["core_pens"]) - 1 and zhongshus_rough[i]["core_pens"][min_pen_index]["direction"] == "Down":
+                elif min_pen_index == len(zhongshus_rough[i]["core_pens"]) - 1:# and zhongshus_rough[i]["core_pens"][min_pen_index]["direction"] == "Down":
                     # 最后一段结束是一买
                     if len(zhongshus_rough[i]["core_pens_index"]) >= 2:
                         first_index_should_include = True if zhongshus_rough[i]["core_pens"][0][
@@ -2659,12 +2698,12 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                             "start_time": zhongshus_rough[i]["core_pens"][0][
                                 "bottom_time"] if first_index_should_include else zhongshus_rough[i]["core_pens"][1][
                                 "bottom_time"],
-                            "end_time": zhongshus_rough[i]["core_pens"][-2]["top_time"],
-                            "core_pens": zhongshus_rough[i]["core_pens"][0:-1] if first_index_should_include else
-                            zhongshus_rough[i]["core_pens"][1:-1],
+                            "end_time": zhongshus_rough[i]["core_pens"][min_pen_index-1]["top_time"],
+                            "core_pens": zhongshus_rough[i]["core_pens"][0:min_pen_index] if first_index_should_include else
+                            zhongshus_rough[i]["core_pens"][1:min_pen_index],
                             "core_pens_index": zhongshus_rough[i]["core_pens_index"][
-                                               0:-1] if first_index_should_include else zhongshus_rough[i][
-                                                                                         "core_pens_index"][1:-1],
+                                               0:min_pen_index] if first_index_should_include else zhongshus_rough[i][
+                                                                                         "core_pens_index"][1:min_pen_index],
                             "GG": None,
                             "DD": None,
                             "direction": "Down",
@@ -2684,7 +2723,7 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                         zhongshu_1["GG"] = max([pen["top_price"] for pen in zhongshu_1["core_pens"]])
                         zhongshu_1["DD"] = min([pen["bottom_price"] for pen in zhongshu_1["core_pens"]])
                         clean_zhongshus.append(zhongshu_1)
-                elif min_pen_index == len(zhongshus_rough[i]["core_pens"]) - 2 and zhongshus_rough[i]["core_pens"][min_pen_index]["direction"] == "Down":
+                elif min_pen_index == len(zhongshus_rough[i]["core_pens"]) - 2:# and zhongshus_rough[i]["core_pens"][min_pen_index]["direction"] == "Down":
                     # 最后一段和倒数第二段之间是一买
                     if len(zhongshus_rough[i]["core_pens_index"]) >= 3:
                         first_index_should_include = True if zhongshus_rough[i]["core_pens"][0][
@@ -2695,12 +2734,12 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                             "start_time": zhongshus_rough[i]["core_pens"][0][
                                 "bottom_time"] if first_index_should_include else zhongshus_rough[i]["core_pens"][1][
                                 "bottom_time"],
-                            "end_time": zhongshus_rough[i]["core_pens"][-3]["top_time"],
-                            "core_pens": zhongshus_rough[i]["core_pens"][0:-2] if first_index_should_include else
-                            zhongshus_rough[i]["core_pens"][1:-2],
+                            "end_time": zhongshus_rough[i]["core_pens"][min_pen_index-1]["top_time"],
+                            "core_pens": zhongshus_rough[i]["core_pens"][0:min_pen_index] if first_index_should_include else
+                            zhongshus_rough[i]["core_pens"][1:min_pen_index],
                             "core_pens_index": zhongshus_rough[i]["core_pens_index"][
-                                               0:-2] if first_index_should_include else zhongshus_rough[i][
-                                                                                            "core_pens_index"][1:-2],
+                                               0:min_pen_index] if first_index_should_include else zhongshus_rough[i][
+                                                                                            "core_pens_index"][1:min_pen_index],
                             "GG": None,
                             "DD": None,
                             "direction": "Down",
@@ -2726,6 +2765,8 @@ def clean_zhongshu_detailed(zhongshus, segments, zgzd_type="classical"):
                                                              'direction'] == "Up" else False
                     last_index_should_include = True if zhongshus_rough[i]["core_pens"][-1][
                                                             'direction'] == "Down" else False
+
+                    # print(zhongshus_rough[i]["core_pens_index"], min_pen_index)
                     zhongshu_1 = {
                         "ZG": None,
                         "ZD": None,
@@ -4570,12 +4611,12 @@ def merge_zhongshu_with_checkpoint(pen_zhongshus, stock_name_and_market, seconds
 
     if not os.path.exists(file_path):
         print("No existing file. Returning original pen_zhongshus.")
-        return pen_zhongshus
+        return pen_zhongshus, pen_zhongshus
 
     existing_pen_zhongshus = load_structure_from_ndjson(file_path)
     if not existing_pen_zhongshus:
         print("Existing NDJSON is empty. Returning original pen_zhongshus.")
-        return pen_zhongshus
+        return pen_zhongshus, pen_zhongshus
 
     last_pen_zhongshu = existing_pen_zhongshus[-1]
     last_time = pd.Timestamp(last_pen_zhongshu["end_time"])
@@ -4593,8 +4634,16 @@ def merge_zhongshu_with_checkpoint(pen_zhongshus, stock_name_and_market, seconds
 
     new_zhongshus = pen_zhongshus[cut_index:]
 
+    new_add_index_from = existing_pen_zhongshus[-1]["core_pens_index"][-1]
+    minus_index = pen_zhongshus[cut_index-1]["core_pens_index"][-1]
+    for i_new_zhongshu in range(len(new_zhongshus)):
+        new_zhongshus[i_new_zhongshu]["core_pens_index"] = [
+            x - minus_index + new_add_index_from for x in new_zhongshus[i_new_zhongshu]["core_pens_index"]
+        ]
+
+
     print(f"Merging {len(new_zhongshus)} new zhongshus with {len(existing_pen_zhongshus)} existing segments.")
-    return existing_pen_zhongshus + convert_timestamps(new_zhongshus)
+    return existing_pen_zhongshus + convert_timestamps(new_zhongshus), new_zhongshus
 
 
 
