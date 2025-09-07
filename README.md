@@ -178,17 +178,12 @@ nohup python machine_learning_caozuo_visualization.py > machine_learning_caozuo_
 
 Port-forward to local:
 
-- Master node:
+
 
 ```bash
-ssh -L 7010:localhost:7010 -i ~/ssh_keys/newKey ubuntu@118.138.234.44
+ssh -L 7010:localhost:7010 -i ~/ssh_keys/newKey ubuntu@xxx.xxx.xxx.xxx
 ```
 
-- 16-core CPU node:
-
-```bash
-ssh -L 7010:localhost:7010 -i ~/ssh_keys/newKey ubuntu@118.138.233.245
-```
 
 ---
 
